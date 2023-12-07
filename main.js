@@ -1,20 +1,20 @@
     const tarefasDiv = document.getElementById('tarefas');
     const finalizadasDiv = document.getElementById('finalizadas');
-    const tarefasT = document.getElementById('tarefasT');           
-    const finalizadasT = document.getElementById('finalizadasT');
-    const descricao = document.getElementById('descricao')
+    const tarefas2 = document.getElementById('tarefas2');           
+    const finalizadas2 = document.getElementById('finalizadas2');
+    const desc = document.getElementById('descricao')
     let itens = [];
     let finalizadas = [];
 
     function NewTarefa() {
-        if (descricao.value.trim() == '') {
+        if (desc.value.trim() == '') {
             alert('Não pode estar invalida');
         } else {
-            if(descricao.value.trim().length > 100){
-                alert(`O maximo de caracteres é 90 (${descricao.value.length - 90} acima)`);
+            if(desc.value.trim().length > 100){
+                alert(`O maximo de caracteres é 90 (${desc.value.length - 90} acima)`);
             } else {
-            itens.push(descricao.value.trim());
-            descricao.value = '';
+            itens.push(desc.value.trim());
+            desc.value = '';
             AtualizaTabelas();
             }
         }    
@@ -41,10 +41,10 @@
             r2 += `<li>${finalizadas[index]}&nbsp;<button onclick='RemoveFinalizada(${index})'>Excluir</button></li>`;}
         tarefasDiv.innerHTML = r1;
         finalizadasDiv.innerHTML = r2;   
-        tarefasT.innerHTML = `Tarefas Pendentes (${itens.length})`;
-        finalizadasT.innerHTML = `Tarefas Finalizadas (${finalizadas.length})`;
+        tarefas2.innerHTML = `Pendentes (${itens.length})`;
+        finalizadas2.innerHTML = `Finalizadas (${finalizadas.length})`;
     }
-    descricao.addEventListener('keydown', function (event){
+    desc.addEventListener('keydown', function (event){
         if(event.key == 'Enter'){NewTarefa()}
         console.log(event.key);
     })
