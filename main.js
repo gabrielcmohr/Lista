@@ -8,10 +8,10 @@
 
     function NewTarefa() {
         if (descricao.value.trim() == '') {
-            alert('A descrição não pode estar vazia');
+            alert('Não pode estar invalida');
         } else {
             if(descricao.value.trim().length > 100){
-                alert(`O maximo de caracteres é 100 (${descricao.value.length - 100} acima)`);
+                alert(`O maximo de caracteres é 90 (${descricao.value.length - 90} acima)`);
             } else {
             itens.push(descricao.value.trim());
             descricao.value = '';
@@ -29,21 +29,7 @@
         finalizadas.splice(id, 1);
         AtualizaTabelas();
         }
-    }
-    function ConcluiTodos() {
-        if (confirm('Tem certeza que deseja concluir todas as tarefas?')) {
-            for (let index = itens.length - 1; index >= 0; index--) {
-                RemoveTarefa(index);
-            }
-            AtualizaTabelas();
-        }
-    }    
-    function DeleteTodos(){
-        if(confirm('Tem certeza que deseja excluir todos as tarefas finalizadas?')){
-            finalizadas = [];
-            AtualizaTabelas();
-        }
-    }
+    }  
     function AtualizaTabelas() {
         let r1 = '';
         if(itens.length > 1){r1 = '<button id="conclui-todos" onclick="ConcluiTodos()">Concluir Todos</button>';}
